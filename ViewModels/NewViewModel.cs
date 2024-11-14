@@ -55,6 +55,7 @@ namespace WpfApp5.ViewModels
 			ErrorService = new ErrorServiceModel("エラーをわざと起こす風");
 
 			CommandTest = new RelayCommand(OnCommandTest);
+			CommandClose = new RelayCommand(OnCommandClose);
 		}
 		#endregion
 

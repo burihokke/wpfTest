@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Reactive.Bindings;
+using WpfApp5.Core;
 
 namespace WpfApp5.ViewModels
 {
@@ -26,6 +27,12 @@ namespace WpfApp5.ViewModels
         {
             this.Result.Value = "終わった";
             this.StatusImage.Value = ChangeStatus(Statuses.Processing);
+
+			var excel = new ExcelService();
+			excel.CreateExcel();
+			excel.AddSheet("hoge");
+			excel.SetCellValue("A1", 2);
+			excel.SetCellValue(1, 2, "you");
         }
 		#endregion
 	}

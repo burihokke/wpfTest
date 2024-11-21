@@ -10,8 +10,6 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    FontFamily="Meiryo UI"
-    FontSize="14"
     mc:Ignorable="d">
     <!--<Window.DataContext>
         <vm:NewViewModel />
@@ -51,154 +49,136 @@
             <Setter Property="Width" Value="30" />
             <Setter Property="Height" Value="30" />
         </Style>
-        <Style x:Key="ButtonBase" TargetType="Button">
-            <Setter Property="Margin" Value="5,5,5,5" />
-        </Style>
-        <Style
-            x:Key="ButtonMain"
-            BasedOn="{StaticResource ButtonBase}"
-            TargetType="Button">
-            <Setter Property="Background" Value="#95edac" />
-            <Setter Property="Width" Value="100" />
-        </Style>
-        <Style
-            x:Key="ButtonSub"
-            BasedOn="{StaticResource ButtonBase}"
-            TargetType="Button">
-            <Setter Property="Width" Value="80" />
-        </Style>
     </Window.Resources>
-    <Grid>
-        <!--#region フォーム全体のテーブル-->
-        <Grid Margin="5,0,5,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
-            <!--#region 機能一覧-->
-            <Grid Grid.Row="0">
-                <Border Style="{StaticResource BorderGrid}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200" />
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <!--#region ヘッダー-->
-                        <Border
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Style="{StaticResource BorderHeader}">
-                            <Label Content="内容" />
-                        </Border>
-                        <Border
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Style="{StaticResource BorderHeader}">
-                            <Label Content="状態" />
-                        </Border>
-                        <Border
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            Style="{StaticResource BorderHeader}">
-                            <Label Content="実行結果" />
-                        </Border>
-                        <!--#endregion-->
-                        <!--#region 機能1-->
-                        <Border
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Style="{StaticResource BorderService}">
-                            <Label Content="{Binding ExcelService.ServiceName.Value}" Style="{StaticResource TextBase}" />
-                        </Border>
-                        <Border
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Style="{StaticResource BorderService}">
-                            <Image
-                                gif:ImageBehavior.AnimatedSource="{Binding ExcelService.StatusImage.Value}"
-                                gif:ImageBehavior.AnimationSpeedRatio="2.0"
-                                Style="{StaticResource ImageBase}" />
-                        </Border>
-                        <Border
-                            Grid.Row="1"
-                            Grid.Column="2"
-                            Style="{StaticResource BorderService}">
-                            <Label Content="{Binding ExcelService.Result.Value}" Style="{StaticResource TextBase}" />
-                        </Border>
-                        <!--#endregion-->
-                        <!--#region 機能2-->
-                        <Border
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            Style="{StaticResource BorderService}">
-                            <Label Content="{Binding ErrorService.ServiceName.Value}" Style="{StaticResource TextBase}" />
-                        </Border>
-                        <Border
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Style="{StaticResource BorderService}">
-                            <Image
-                                gif:ImageBehavior.AnimatedSource="{Binding ErrorService.StatusImage.Value}"
-                                gif:ImageBehavior.AnimationSpeedRatio="2.0"
-                                Style="{StaticResource ImageBase}" />
-                        </Border>
-                        <Border
-                            Grid.Row="2"
-                            Grid.Column="2"
-                            Style="{StaticResource BorderService}">
-                            <Label Content="{Binding ErrorService.Result.Value}" Style="{StaticResource TextBase}" />
-                        </Border>
-                        <!--#endregion-->
-                        <!--#region 機能3-->
-                        <Border
-                            Grid.Row="3"
-                            Grid.Column="0"
-                            Style="{StaticResource BorderService}">
-                            <Label Style="{StaticResource TextBase}">piyo</Label>
-                        </Border>
-                        <Border
-                            Grid.Row="3"
-                            Grid.Column="1"
-                            Style="{StaticResource BorderService}">
-                            <Image Style="{StaticResource ImageBase}" />
-                        </Border>
-                        <Border
-                            Grid.Row="3"
-                            Grid.Column="2"
-                            Style="{StaticResource BorderService}">
-                            <Label Style="{StaticResource TextBase}">実行結果を表示</Label>
-                        </Border>
-                        <!--#endregion-->
-                    </Grid>
-                </Border>
-            </Grid>
-            <!--#endregion-->
-            <!--#region 実行ボタン-->
-            <StackPanel
-                Grid.Row="1"
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
-                <Button
-                    Command="{Binding CommandTest}"
-                    Content="開始"
-                    Style="{StaticResource ButtonMain}" />
-                <Button
-                    Command="{Binding CommandClose}"
-                    Content="終了"
-                    Style="{StaticResource ButtonSub}" />
-            </StackPanel>
-            <!--#endregion-->
+    <!--#region フォーム全体のテーブル-->
+    <Grid Style="{StaticResource WholeGrid}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <!--#region 機能一覧-->
+        <Grid Grid.Row="0">
+            <Border Style="{StaticResource BorderGrid}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <!--#region ヘッダー-->
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Style="{StaticResource BorderHeader}">
+                        <Label Content="内容" />
+                    </Border>
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource BorderHeader}">
+                        <Label Content="状態" />
+                    </Border>
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Style="{StaticResource BorderHeader}">
+                        <Label Content="実行結果" />
+                    </Border>
+                    <!--#endregion-->
+                    <!--#region 機能1-->
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Style="{StaticResource BorderService}">
+                        <Label Content="{Binding ExcelService.ServiceName.Value}" Style="{StaticResource TextBase}" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Style="{StaticResource BorderService}">
+                        <Image
+                            gif:ImageBehavior.AnimatedSource="{Binding ExcelService.StatusImage.Value}"
+                            gif:ImageBehavior.AnimationSpeedRatio="2.0"
+                            Style="{StaticResource ImageBase}" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Style="{StaticResource BorderService}">
+                        <Label Content="{Binding ExcelService.Result.Value}" Style="{StaticResource TextBase}" />
+                    </Border>
+                    <!--#endregion-->
+                    <!--#region 機能2-->
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Style="{StaticResource BorderService}">
+                        <Label Content="{Binding ErrorService.ServiceName.Value}" Style="{StaticResource TextBase}" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Style="{StaticResource BorderService}">
+                        <Image
+                            gif:ImageBehavior.AnimatedSource="{Binding ErrorService.StatusImage.Value}"
+                            gif:ImageBehavior.AnimationSpeedRatio="2.0"
+                            Style="{StaticResource ImageBase}" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Style="{StaticResource BorderService}">
+                        <Label Content="{Binding ErrorService.Result.Value}" Style="{StaticResource TextBase}" />
+                    </Border>
+                    <!--#endregion-->
+                    <!--#region 機能3-->
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Style="{StaticResource BorderService}">
+                        <Label Style="{StaticResource TextBase}">piyo</Label>
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Style="{StaticResource BorderService}">
+                        <Image Style="{StaticResource ImageBase}" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Style="{StaticResource BorderService}">
+                        <Label Style="{StaticResource TextBase}">実行結果を表示</Label>
+                    </Border>
+                    <!--#endregion-->
+                </Grid>
+            </Border>
         </Grid>
         <!--#endregion-->
+        <!--#region 実行ボタン-->
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button
+                Command="{Binding CommandTest}"
+                Content="開始"
+                Style="{StaticResource ButtonMain}" />
+            <Button
+                Command="{Binding CommandClose}"
+                Content="終了"
+                Style="{StaticResource ButtonSub}" />
+        </StackPanel>
+        <!--#endregion-->
     </Grid>
+    <!--#endregion-->
 </Window>

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfApp5.ViewModels.window;
+using WpfApp5.Views;
 
 namespace WpfApp5.ViewModels
 {
@@ -40,6 +41,8 @@ namespace WpfApp5.ViewModels
 		/// </summary>
 		public IRelayCommand CommandTest { get; }
 
+		public IRelayCommand CommandConfig { get; }
+
 		public IRelayCommand CommandClose { get; }
 		#endregion
 
@@ -55,6 +58,7 @@ namespace WpfApp5.ViewModels
 			ErrorService = new ErrorServiceModel("エラーをわざと起こす風");
 
 			CommandTest = new RelayCommand(OnCommandTest);
+			CommandConfig = new RelayCommand(OnCommandConfig);
 			CommandClose = new RelayCommand(OnCommandClose);
 		}
 		#endregion
@@ -67,6 +71,12 @@ namespace WpfApp5.ViewModels
 		{
 			ExcelService.Execute();
 			ErrorService.Execute();
+		}
+
+		private void OnCommandConfig()
+		{
+			var window = new ConfigWindow();
+			window.Show();
 		}
 
 		private void OnCommandClose()

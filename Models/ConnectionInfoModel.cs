@@ -20,6 +20,13 @@ namespace WpfApp5.Models
 			Database = GetApp("database");
 		}
 
+		public ConnectionInfoModel(string host, string user, string database)
+		{
+			Host = host;
+			User = user;
+			Database = database;
+		}
+
 		private string GetApp(string key)
 		{
 			string? value = ConfigurationManager.AppSettings[key];
@@ -30,6 +37,16 @@ namespace WpfApp5.Models
 		public string ConnectionInfo()
 		{
 			return $"Host={Host};Username={User};Database={Database}";
+		}
+
+		public void Save()
+		{
+			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			config.AppSettings.Settings["host"].Value = Host;
+			config.AppSettings.Settings["user"].Value = User;
+			config.AppSettings.Settings["database"].Value = Database;
+			config.Save(ConfigurationSaveMode.Modified);
+			ConfigurationManager.RefreshSection(config.AppSettings.SectionInformation.Name);
 		}
 	}
 }

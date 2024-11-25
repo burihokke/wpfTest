@@ -67,7 +67,10 @@
             Grid.Row="1"
             HorizontalAlignment="Right"
             Orientation="Horizontal">
-            <Button Content="登録" Style="{StaticResource ButtonMain}" />
+            <Button
+                Command="{Binding CommandUpdate}"
+                Content="登録"
+                Style="{StaticResource ButtonMain}" />
             <Button Content="終了" Style="{StaticResource ButtonSub}" />
         </StackPanel>
         <!--#endregion-->

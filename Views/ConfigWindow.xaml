@@ -69,9 +69,14 @@
             Orientation="Horizontal">
             <Button
                 Command="{Binding CommandUpdate}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                 Content="登録"
                 Style="{StaticResource ButtonMain}" />
-            <Button Content="終了" Style="{StaticResource ButtonSub}" />
+            <Button
+                Command="{Binding CommandClose}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Content="終了"
+                Style="{StaticResource ButtonSub}" />
         </StackPanel>
         <!--#endregion-->
     </Grid>

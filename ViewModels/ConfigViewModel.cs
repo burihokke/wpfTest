@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Reactive.Bindings;
+using System.Windows;
 using WpfApp5.Models;
 namespace WpfApp5.ViewModels
 {
@@ -25,7 +26,12 @@ namespace WpfApp5.ViewModels
 		/// <summary>
 		/// 登録ボタン
 		/// </summary>
-        public IRelayCommand CommandUpdate { get; }
+        public IRelayCommand<Window> CommandUpdate { get; }
+
+		/// <summary>
+		/// 終了ボタン
+		/// </summary>
+		public IRelayCommand<Window> CommandClose { get; }
 		#endregion
 
 		#region コンストラクタ
@@ -40,7 +46,8 @@ namespace WpfApp5.ViewModels
             User.Value = info.User;
             Database.Value = info.Database;
 
-			CommandUpdate = new RelayCommand(OnCommandUpdate);
+			CommandUpdate = new RelayCommand<Window>(OnCommandUpdate);
+			CommandClose = new RelayCommand<Window>(OnCommandClose);
         }
 		#endregion
 
@@ -48,10 +55,17 @@ namespace WpfApp5.ViewModels
 		/// <summary>
 		/// 更新ボタン
 		/// </summary>
-		private void OnCommandUpdate()
+		private void OnCommandUpdate(Window window)
 		{
 			var info = new ConnectionInfoModel(Host.Value, User.Value, Database.Value);
 			info.Save();
+
+			window?.Close();
+		}
+
+		private void OnCommandClose(Window window)
+		{
+			window?.Close();
 		}
 		#endregion
 	}

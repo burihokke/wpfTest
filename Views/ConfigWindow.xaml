@@ -40,16 +40,25 @@
             </Grid.RowDefinitions>
             <!--#endregion-->
             <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <Label Content="ホスト：" />
-                <TextBox Width="150" Text="{Binding Host.Value, Mode=TwoWay}" />
+                <Label Content="ホスト：" Style="{StaticResource LabelBase}" />
+                <TextBox
+                    Width="150"
+                    Style="{StaticResource TextBoxBase}"
+                    Text="{Binding Host.Value, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Label Content="ユーザー名：" />
-                <TextBox Width="150" Text="{Binding User.Value, Mode=TwoWay}" />
+                <Label Content="ユーザー名：" Style="{StaticResource LabelBase}" />
+                <TextBox
+                    Width="150"
+                    Style="{StaticResource TextBoxBase}"
+                    Text="{Binding User.Value, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
-                <Label Content="データベース：" />
-                <TextBox Width="150" Text="{Binding Database.Value, Mode=TwoWay}" />
+                <Label Content="データベース：" Style="{StaticResource LabelBase}" />
+                <TextBox
+                    Width="150"
+                    Style="{StaticResource TextBoxBase}"
+                    Text="{Binding Database.Value, Mode=TwoWay}" />
             </StackPanel>
         </Grid>
         <!--#endregion-->

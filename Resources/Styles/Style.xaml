@@ -15,6 +15,7 @@
     <!--  ボタン  -->
     <Style x:Key="ButtonBase" TargetType="Button">
         <Setter Property="Margin" Value="5" />
+        <Setter Property="Height" Value="30" />
     </Style>
     <Style
         x:Key="ButtonMain"
@@ -29,4 +30,17 @@
         TargetType="Button">
         <Setter Property="Width" Value="80" />
     </Style>
+
+    <!--#region テキストボックス-->
+    <Style x:Key="TextBoxBase" TargetType="TextBox">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="30" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region ラベル-->
+    <Style x:Key="LabelBase" TargetType="Label">
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <!--#endregion-->
 </ResourceDictionary>
